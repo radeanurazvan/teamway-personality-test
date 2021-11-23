@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. Infrastructure", "02. I
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03. Core", "03. Core", "{5B459FF6-731B-42B7-93D9-92D9C76FB942}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04. Crosscutting Concerns", "04. Crosscutting Concerns", "{041FA1B7-161D-4269-A87F-B641E2104E49}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "99. Tests", "99. Tests", "{ABCD78DC-39B2-4DEB-97F2-A4B4EE5B7EAC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Teamway.PersonalityTest.Persistence", "Teamway.PersonalityTest.Persistence\Teamway.PersonalityTest.Persistence.csproj", "{7682F182-D824-471E-BDF5-C3235C655230}"
@@ -21,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Teamway.PersonalityTest.Dom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Teamway.PersonalityTest.Tests", "Teamway.PersonalityTest.Tests\Teamway.PersonalityTest.Tests.csproj", "{ED65ED06-2282-42A0-9478-12663913392F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teamway.PersonalityTest.Functions", "Teamway.PersonalityTest.Functions\Teamway.PersonalityTest.Functions.csproj", "{11BD1C0C-97AC-4A7C-8692-DF09DBB7E260}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Teamway.PersonalityTest.Functions", "Teamway.PersonalityTest.Functions\Teamway.PersonalityTest.Functions.csproj", "{11BD1C0C-97AC-4A7C-8692-DF09DBB7E260}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
