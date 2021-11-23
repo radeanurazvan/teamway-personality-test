@@ -1,8 +1,7 @@
-﻿using System.Linq;
+﻿using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
-using MediatR;
 using Teamway.PersonalityTest.Domain;
 
 namespace Teamway.PersonalityTest.Business
@@ -18,16 +17,7 @@ namespace Teamway.PersonalityTest.Business
 
         public Task<Maybe<QuestionModel>> Handle(GetQuestionQuery request, CancellationToken cancellationToken)
         {
-            var modelOrNothing = questionsRepository.GetOne(q => q.Id == request.QuestionId).Map(q => new QuestionModel
-            {
-                Id = q.Id,
-                Text = q.Text,
-                Answers = q.Answers.Select(a => new QuestionAnswerModel
-                {
-                    Id = a.Id,
-                    Text = a.Text
-                }).ToList()
-            });
+            var modelOrNothing = questionsRepository.GetOne(q => q.Id == request.QuestionId).Map(q => q.ToModel());
 
             return Task.FromResult(modelOrNothing);
         }

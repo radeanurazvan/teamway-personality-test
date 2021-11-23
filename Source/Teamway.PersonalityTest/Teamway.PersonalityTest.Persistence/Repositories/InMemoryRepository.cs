@@ -26,7 +26,6 @@ namespace Teamway.PersonalityTest.Persistence
         {
         }
 
-
         protected virtual IEnumerable<T> GetInitialState() => new List<T>();
     }
 }

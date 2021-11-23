@@ -28,6 +28,8 @@ namespace Teamway.PersonalityTest.Domain
                 .Map(q => new Test(q));
         }
 
+        public IEnumerable<TestScore> Scores => this.scores;
+
         public Result Answer(Guid questionId, QuestionAnswer answer)
         {
             if (IsFinished())
@@ -47,10 +49,10 @@ namespace Teamway.PersonalityTest.Domain
                 .Tap(ComputeScore);
         }
 
-        public Maybe<Guid> GetNextQuestion()
+        public Maybe<Guid> GetCurrentQuestion()
         {
             var answeredQuestions = answers.Select(a => a.QuestionId);
-            return questions.TryFirst(q => !answeredQuestions.Contains(q.Id))
+            return questions.TryFirst(q => !answeredQuestions.Contains(q.QuestionId))
                 .Map(q => q.QuestionId);
         }
 

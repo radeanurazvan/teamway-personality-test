@@ -24,6 +24,7 @@ namespace Teamway.PersonalityTest.Business
 
             var result = Test.Create(questions)
                 .Tap(t => testsRepository.Add(t))
+                .Tap(() => testsRepository.SaveChanges())
                 .Map(t => t.Id);
 
             return Task.FromResult(result);

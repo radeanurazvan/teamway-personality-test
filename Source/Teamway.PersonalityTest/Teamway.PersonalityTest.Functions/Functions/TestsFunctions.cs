@@ -31,7 +31,7 @@ namespace Teamway.PersonalityTest.Functions
         }
 
         [FunctionName(nameof(AnswerTestQuestion))]
-        public async Task<IActionResult> AnswerTestQuestion([HttpTrigger(AuthorizationLevel.Function, HttpVerbs.Post, Route = "v1/tests/{id}/answers")] HttpRequest req, Guid? id)
+        public async Task<IActionResult> AnswerTestQuestion([HttpTrigger(AuthorizationLevel.Function, HttpVerbs.Patch, Route = "v1/tests/{id}/answers")] HttpRequest req, Guid? id)
         {
             var result = await req.DeserializeBodyPayload<AnswerTestQuestionModel>()
                 .Map(m => new AnswerTestQuestionCommand(id.GetValueOrDefault(), m.QuestionId, m.AnswerId))
@@ -40,6 +40,28 @@ namespace Teamway.PersonalityTest.Functions
             return result.IsSuccess
                 ? new OkObjectResult(result.Value)
                 : (IActionResult)new BadRequestObjectResult(result.Error);
+        }
+
+        [FunctionName(nameof(GetCurrentTestQuestion))]
+        public async Task<IActionResult> GetCurrentTestQuestion([HttpTrigger(AuthorizationLevel.Function, HttpVerbs.Get, Route = "v1/tests/{id}/current-question")] HttpRequest req, Guid? id)
+        {
+            var query = new GetCurrentTestQuestionQuery(id.GetValueOrDefault());
+            var result = await mediator.Send(query);
+
+            return result.HasValue
+                ? new OkObjectResult(result.Value)
+                : (IActionResult)new NotFoundResult();
+        }
+
+        [FunctionName(nameof(GetTestScore))]
+        public async Task<IActionResult> GetTestScore([HttpTrigger(AuthorizationLevel.Function, HttpVerbs.Get, Route = "v1/tests/{id}/score")] HttpRequest req, Guid? id)
+        {
+            var query = new GetTestScoreQuery(id.GetValueOrDefault());
+            var result = await mediator.Send(query);
+
+            return result.HasValue
+                ? new OkObjectResult(result.Value)
+                : (IActionResult)new NotFoundResult();
         }
     }
 }

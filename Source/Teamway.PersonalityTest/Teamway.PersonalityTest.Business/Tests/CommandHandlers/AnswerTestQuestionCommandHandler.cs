@@ -26,7 +26,7 @@ namespace Teamway.PersonalityTest.Business
             var result = Result.FirstFailureOrSuccess(testResult, answerResult)
                 .Bind(() => testResult.Value.Answer(request.QuestionId, answerResult.Value))
                 .Tap(() => testsRepository.SaveChanges())
-                .Map(() => new AnswerTestQuestionResult(testResult.Value.IsFinished(), testResult.Value.GetNextQuestion()));
+                .Map(() => new AnswerTestQuestionResult(testResult.Value.IsFinished(), testResult.Value.GetCurrentQuestion()));
 
             return Task.FromResult(result);
         }
